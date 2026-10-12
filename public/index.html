@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voucher Transaksi Kas Keluar</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Voucher Entri Transaksi Kas Keluar</h1>
+      <p>Sistem pencatatan transaksi dan jurnal akuntansi</p>
+    </header>
+
+    <form id="voucherForm">
+      <section class="card">
+        <h2>Informasi Voucher</h2>
+
+        <div class="form-group">
+          <label for="transactionDate">Tanggal Transaksi</label>
+          <input type="date" id="transactionDate" name="transactionDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="referenceNo">Nomor Referensi</label>
+          <input
+            type="text"
+            id="referenceNo"
+            name="referenceNo"
+            placeholder="Contoh: KK-UTS-005"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="description">Keterangan</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Contoh: Pembayaran listrik kantor"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="cashFlowActivity">Kategori Aktivitas Arus Kas</label>
+          <select id="cashFlowActivity" name="cashFlowActivity" required>
+            <option value="">-- Pilih kategori --</option>
+            <option value="OPERATING">Aktivitas Operasi</option>
+            <option value="INVESTING">Aktivitas Investasi</option>
+            <option value="FINANCING">Aktivitas Pendanaan</option>
+          </select>
+          <small>
+            Pilih kategori sesuai sifat transaksi untuk membantu penyusunan laporan arus kas.
+          </small>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Rincian Jurnal</h2>
+        <p>Masukkan akun debit dan kredit. Total debit harus sama dengan total kredit.</p>
+
+        <div id="journalLines"></div>
+
+        <button type="button" id="addLineBtn">
+          + Tambah Baris Jurnal
+        </button>
+
+        <div class="totals">
+          <p>Total Debit: <strong id="totalDebit">Rp 0</strong></p>
+          <p>Total Kredit: <strong id="totalCredit">Rp 0</strong></p>
+          <p id="balanceStatus" role="status">Lengkapi jurnal terlebih dahulu.</p>
+        </div>
+      </section>
+
+      <button type="submit" id="submitBtn" disabled>
+        Simpan dan Posting Voucher
+      </button>
+
+      <section class="card">
+        <h2>Hasil Transaksi</h2>
+        <pre id="result" aria-live="polite">Belum ada transaksi yang disimpan.</pre>
+      </section>
+    </form>
+  </main>
+</body>
+</html>
